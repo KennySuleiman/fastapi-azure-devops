@@ -4,6 +4,7 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+
 steps:
   - checkout: self
     path: .
@@ -15,7 +16,7 @@ steps:
     inputs:
       versionSpec: '3.10'
 
-  - script: pip install -r requirements.txt
+  - script: pip install -r fastapi-azure-devops/requirements.txt
     displayName: 'Install dependencies'
 
   - script: pytest --junitxml=test-results.xml
