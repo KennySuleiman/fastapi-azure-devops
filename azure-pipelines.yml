@@ -5,6 +5,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+  - checkout: self
+    path: .
+
+  - script: ls -R
+    displayName: 'Show folder structure'
+
   - task: UsePythonVersion@0
     inputs:
       versionSpec: '3.10'
