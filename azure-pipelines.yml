@@ -3,6 +3,9 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
+  
+  - checkout: self
+  path: .
 
 steps:
   - checkout: self
