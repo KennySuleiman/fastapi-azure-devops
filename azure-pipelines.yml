@@ -1,16 +1,12 @@
-trigger:
-  - main
-
-pool:
-  vmImage: 'ubuntu-latest'
-
 steps:
   - checkout: self
     path: .
 
+  - script: pwd
+    displayName: 'Show working directory'
+
   - script: ls -R
     displayName: 'Show folder structure'
-
   - task: UsePythonVersion@0
     inputs:
       versionSpec: '3.10'
@@ -25,4 +21,3 @@ steps:
     inputs:
       testResultsFiles: 'test-results.xml'
       testRunTitle: 'Python FastAPI Tests'
-
