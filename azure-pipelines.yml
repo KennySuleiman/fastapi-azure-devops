@@ -1,23 +1,27 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
 steps:
   - checkout: self
-    path: .
-
-  - script: pwd
-    displayName: 'Show working directory'
 
   - script: ls -R
     displayName: 'Show folder structure'
+
   - task: UsePythonVersion@0
     inputs:
       versionSpec: '3.10'
 
-  - script: pip install -r requirements.txt
+  - script: pip install -r fastapi-azure-devops/requirements.txt
     displayName: 'Install dependencies'
 
-  - script: pytest --junitxml=test-results.xml
+  - script: pytest fastapi-azure-devops --junitxml=test-results.xml
     displayName: 'Run tests'
 
   - task: PublishTestResults@2
     inputs:
       testResultsFiles: 'test-results.xml'
       testRunTitle: 'Python FastAPI Tests'
+
