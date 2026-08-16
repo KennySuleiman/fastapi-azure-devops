@@ -3,9 +3,6 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
-  
-  - checkout: self
-  path: .
 
 steps:
   - checkout: self
@@ -28,3 +25,4 @@ steps:
     inputs:
       testResultsFiles: 'test-results.xml'
       testRunTitle: 'Python FastAPI Tests'
+
