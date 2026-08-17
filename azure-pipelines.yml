@@ -14,10 +14,13 @@ steps:
     inputs:
       versionSpec: '3.10'
 
-  - script: pip install -r fastapi-azure-devops/requirements.txt
+  - script: |
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
     displayName: 'Install dependencies'
 
-  - script: pytest fastapi-azure-devops --junitxml=test-results.xml
+  - script: |
+      pytest --junitxml=test-results.xml
     displayName: 'Run tests'
 
   - task: PublishTestResults@2
